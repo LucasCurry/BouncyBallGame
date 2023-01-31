@@ -5,7 +5,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
-jarRepositories.xml
+.iead/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
 .idea/encodings.xml
@@ -43,3 +43,4 @@ build/
 ### Mac OS ###
 .DS_Store
 /compiler.xml
+/jarRepositories.xml
