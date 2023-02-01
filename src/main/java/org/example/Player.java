@@ -5,59 +5,42 @@ import com.googlecode.lanterna.input.KeyType;
 
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 
 public class Player {
-    int x = 40;
-    int y = 12;
-    final char player = 'X';
+    final int row = 22;
+    int rightSide = 44;
+    int leftSide = 36;
+    final char player = '=';
     private Screen screen;
 
     public Player(Screen screen) {
+        int colNew = leftSide;
         this.screen = screen;
+        for (int i = colNew; i<= rightSide; i++){
+            screen.putChar(colNew+1, row, '=');
+            colNew++;
+        }
 
     }
 
-    public void setPlayer() throws IOException, InterruptedException {
 
+    public void left() {
+        if (leftSide > 1){
+            leftSide--;
+            screen.putChar(leftSide, row, '=');
+            screen.putChar(rightSide, row, ' ');
+            rightSide--;
+        }
+    }
 
-      /*  terminal.setCursorPosition(x, y);
-        terminal.putCharacter(player);
-        terminal.setCursorVisible(false);
-        terminal.flush();
-
-        boolean contntinueReadingInput = true;
-        while (contntinueReadingInput) {
-            KeyStroke keyStroke;
-            do {
-                Thread.sleep(5); // might throw InterruptedException
-                keyStroke = terminal.pollInput();
-            } while (keyStroke == null);
-            KeyType type = keyStroke.getKeyType();
-            Character c = keyStroke.getCharacter();
-            switch (type) {
-                case ArrowLeft:
-                    terminal.setCursorPosition(x, y);
-                    terminal.putCharacter(' ');
-                    x = x - 1;
-                    terminal.setCursorPosition(x, y);
-                    terminal.putCharacter(player);
-                    break;
-                case ArrowRight:
-                    terminal.setCursorPosition(x, y);
-                    terminal.putCharacter(player);
-                    break;
-            }
-            terminal.flush();
-            if (c == Character.valueOf('q')) {
-                contntinueReadingInput = false;
-                System.out.println("Quit Game");
-                terminal.close();
-            }
-
-
-        }*/
-
-
+    public void right() {
+        if(rightSide < 78){
+            rightSide++;
+            screen.putChar(rightSide, row, '=');
+            screen.putChar(leftSide, row, ' ');
+            leftSide++;
+        }
     }
 }

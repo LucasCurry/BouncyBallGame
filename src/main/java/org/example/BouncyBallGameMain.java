@@ -1,17 +1,41 @@
 package org.example;
 
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
 public class BouncyBallGameMain {
+    static Screen screen = new Screen();
+    static Player player = new Player(screen);
     public static void main(String[] args) throws IOException, InterruptedException {
-        Screen screen = new Screen();
-        Player player = new Player(screen);
+
         screen.border();
-//        Player player = new Player();
-//        player.Player();
+        long tick = 0;
+
+        while (true) {
+            KeyStroke keyStroke;
+            do {
+                tick++;
+                if (tick % 30 == 0){
+                    //hej
+                }
+                keyStroke = screen.getKeyStroke();
+                Thread.sleep(5);
+            }while (keyStroke == null);
+            switch (keyStroke.getKeyType()){
+                case ArrowLeft:
+                    player.left();
+                    break;
+                case ArrowRight:
+                    player.right();
+                    break;
+            }
+        }
 
     }
+
+
 }

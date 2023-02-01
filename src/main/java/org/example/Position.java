@@ -3,14 +3,20 @@ package org.example;
 public class Position {
     int col,row;
 
-    public int getRow() {
-        return row;
-    }
 
+    public Position(int col) {
+        this.col = col;
+    }
     public Position(int col, int row) {
         this.row = row;
         this.col = col;
     }
+
+
+    public int getRow() {
+        return row;
+    }
+
 
     public void setRow(int row) {
         this.row = row;
