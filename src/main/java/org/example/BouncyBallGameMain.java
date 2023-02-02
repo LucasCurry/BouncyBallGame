@@ -10,6 +10,7 @@ import java.io.IOException;
 public class BouncyBallGameMain {
     static Screen screen = new Screen();
     static Player player = new Player(screen);
+    static Ball ball = new Ball(screen);
     public static void main(String[] args) throws IOException, InterruptedException {
 
         screen.border();
@@ -18,9 +19,9 @@ public class BouncyBallGameMain {
         while (true) {
             KeyStroke keyStroke;
             do {
-                tick++;
-                if (tick % 30 == 0){
-                    //hej
+                tick++; //Här kommer vi vilja ha koden för bollrörelse, denna
+                if (tick % 90 == 0){
+                    ball.move();
                 }
                 keyStroke = screen.getKeyStroke();
                 Thread.sleep(5);

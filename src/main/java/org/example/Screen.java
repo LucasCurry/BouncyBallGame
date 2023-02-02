@@ -15,8 +15,10 @@ import java.io.IOException;
  */
 public class Screen {
     public static final int COLS = 80, ROWS = 24 ;
-    static final char BLOCK = 'O';
-    static final char bottomRow = '^';
+    private final char topSide = '-';
+    private final char sides = '|';
+    private final char bottomRow = '^';
+    private final char playerPadel = '=';
     public static final TextColor
             WHITE = new TextColor.RGB(255,255,255),
             BLACK = new TextColor.RGB(0,0,0),
@@ -122,12 +124,28 @@ public class Screen {
      */
     public void border() {
         for (int row = 0; row <ROWS; row++) {
-            putChar(0, row, BLOCK);
-            putChar(COLS-1, row, BLOCK);
+            putChar(0, row, sides);
+            putChar(COLS-1, row, sides);
         }
         for (int col = 0; col <COLS; col++) {
-            putChar(col, 0, BLOCK);
+            putChar(col, 0, topSide);
             putChar(col, ROWS-1, bottomRow);
         }
+    }
+
+    public char getTopSide() {
+        return topSide;
+    }
+
+    public char getSides() {
+        return sides;
+    }
+
+    public char getBottomRow() {
+        return bottomRow;
+    }
+
+    public char getPlayerPadel() {
+        return playerPadel;
     }
 }

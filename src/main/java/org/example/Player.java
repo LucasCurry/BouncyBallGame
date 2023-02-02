@@ -24,8 +24,6 @@ public class Player {
         }
 
     }
-
-
     public void left() {
         if (leftSide > 1){
             leftSide--;
