@@ -1,9 +1,6 @@
 package org.example;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
@@ -11,6 +8,7 @@ public class BouncyBallGameMain {
     static Screen screen = new Screen();
     static Player player = new Player(screen);
     static Ball ball = new Ball(screen);
+
     public static void main(String[] args) throws IOException, InterruptedException {
 
         screen.border();
@@ -19,14 +17,15 @@ public class BouncyBallGameMain {
         while (true) {
             KeyStroke keyStroke;
             do {
-                tick++; //Här kommer vi vilja ha koden för bollrörelse, denna
-                if (tick % 90 == 0){
+                //
+                tick++;
+                if (tick % ball.getTicks() == 0) {
                     ball.move();
                 }
                 keyStroke = screen.getKeyStroke();
                 Thread.sleep(5);
-            }while (keyStroke == null);
-            switch (keyStroke.getKeyType()){
+            } while (keyStroke == null);
+            switch (keyStroke.getKeyType()) {
                 case ArrowLeft:
                     player.left();
                     break;
@@ -37,6 +36,4 @@ public class BouncyBallGameMain {
         }
 
     }
-
-
 }
